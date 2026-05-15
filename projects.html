@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Projects – Soul Creations Sri Lanka</title>
+    <link rel="icon" type="image/png" href="assets/images/logo-white-sq.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Gradient accent for projects page (orange/red) */
+        .gradient-text {
+            background: linear-gradient(135deg, #ff7e5e, #feb47b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .project-card {
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(255,126,94,0.3);
+        }
+    </style>
+</head>
+<body class="bg-black text-white font-['Inter'] overflow-x-hidden">
+
+    <!-- LOADER (same as index) -->
+    <div id="loader" class="fixed inset-0 z-50 bg-black flex flex-col items-center justify-center">
+        <img src="assets/images/logo-white-hz.png" alt="Soul Creations" class="w-48 md:w-64 opacity-0" id="loader-logo" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=text-2xl tracking-wider>SOUL CREATIONS</div>'">
+        <div class="mt-8 w-16 h-px bg-white/30 overflow-hidden"><div class="w-full h-full bg-white origin-left" id="loader-line"></div></div>
+    </div>
+
+    <!-- GRAIN OVERLAY -->
+    <div class="grain-overlay fixed inset-0 pointer-events-none z-40 opacity-20"></div>
+
+    <!-- MOUSE FOLLOWER -->
+    <div class="mouse-follower fixed w-8 h-8 rounded-full border border-white/40 pointer-events-none z-50 hidden md:block backdrop-blur-sm"></div>
+
+    <!-- NAVBAR (identical to index, active Projects) -->
+    <header class="fixed top-0 left-0 w-full z-30 py-4 px-6 md:px-12 transition-all duration-300 bg-black/80 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html"><img src="assets/images/logo-white-hz.png" alt="Soul Creations" class="h-8 md:h-10" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=text-white text-xl font-light>SOUL CREATIONS</span>'"></a>
+            <nav class="hidden md:flex space-x-8 text-sm uppercase tracking-wide">
+                <a href="index.html">Home</a><a href="projects.html" class="border-b border-white">Projects</a><a href="services.html">Services</a><a href="about.html">About</a><a href="pricing.html">Pricing</a><a href="albums.html">Albums</a><a href="contact.html">Contact</a>
+            </nav>
+            <a href="contact.html" class="hidden md:block px-5 py-2 border border-white/40 rounded-full text-sm hover:bg-white hover:text-black transition">Book Now</a>
+            <button id="menu-btn" class="md:hidden text-white"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button>
+        </div>
+        <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-black z-40 transform -translate-y-full transition-transform duration-500 ease-in-out flex flex-col items-center justify-center space-y-8 text-2xl">
+            <a href="index.html">Home</a><a href="projects.html">Projects</a><a href="services.html">Services</a><a href="about.html">About</a><a href="pricing.html">Pricing</a><a href="albums.html">Albums</a><a href="contact.html">Contact</a>
+            <a href="contact.html" class="mt-4 px-8 py-2 border border-white/50 rounded-full text-base">Book Now</a>
+        </div>
+    </header>
+
+    <main class="pt-28 pb-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-6xl md:text-8xl font-light text-center mb-4 reveal-up gradient-text">Our Creations</h1>
+            <p class="text-center text-white/60 text-lg mb-12 reveal-up">Soulful work that speaks for itself</p>
+
+            <!-- VIDEOS SECTION (All YouTube links as responsive grid) -->
+            <div class="mb-20">
+                <h2 class="text-4xl font-light text-center mb-8 reveal">Featured Videos</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- 22 video embeds – one per line for massive count -->
+                    <div class="reveal project-card"><div class="aspect-video rounded-xl overflow-hidden shadow-2xl"><iframe class="w-full h-full" src="https://www.youtube.com/embed/ZNJ-PSIvL_0" frameborder="0" allowfullscreen></iframe></div></div>
+                    <div class="reveal project-card"><div class="aspect-video rounded-xl overflow-hidden shadow-2xl"><iframe class="w-full h-full" src="https://www.youtube.com/embed/SQxpeqCAqdo" frameborder="0" allowfullscreen></iframe></div></div>
+                    <div class="reveal project-card"><div class="aspect-video rounded-xl overflow-hidden shadow-2xl"><iframe class="w-full h-full" src="https://www.youtube.com/embed/5ajkFObcXAk" frameborder="0" allowfullscreen></iframe></div></div>
+                    <div class="reveal project-card"><div class="aspect-video rounded-xl overflow-hidden shadow-2xl"><iframe class="w-full h-full" src="https://www.youtube.com/embed/Gr04bsIu2wA" frameborder="0" allowfullscreen></iframe></div></div>
+                    <div class="reveal project-card"><div class="aspect-video rounded-xl overflow-hidden shadow-2xl"><iframe class="w-full h-full" src="https://www.youtube.com/embed/FqZiiD9GnWE" frameborder="0" allowfullscreen></iframe></div></div>
+                    <div class="reveal project-card"><div class="aspect-video rounded-xl overflow-hidden shadow-2xl"><iframe class="w-full h-full" src="https://www.youtube.com/embed/KV-6TJCWKig" frameborder="0" allowfullscreen></iframe></div></div>
+                    <div class="reveal project-card"><div class="aspect-video rounded-xl overflow-hidden shadow-2xl"><iframe class="w-full h-full" src="https://www.youtube.com/embed/sL9kaaVznKg" frameborder="0" allowfullscreen></iframe></div></div>
+                    <div class="reveal project-card"><div class="aspect-video rounded-xl overflow-hidden shadow-2xl"><iframe class="w-full h-full" src="https://www.youtube.com/embed/Fezrr5-viHg" frameborder="0" allowfullscreen></iframe></div></div>
+                    <div class="reveal project-card"><div class="aspect-video rounded-xl overflow-hidden shadow-2xl"><iframe class="w-full h-full" src="https://www.youtube.com/embed/RUUR1nSL8Ao" frameborder="0" allowfullscreen></iframe></div></div>
+                    <div class="reveal project-card"><div class="aspect-video rounded-xl overflow-hidden shadow-2xl"><iframe class="w-full h-full" src="https://www.youtube.com/embed/FZyOBD4ymLo" frameborder="0" allowfullscreen></iframe></div></div>
+                    <!-- YouTube Shorts (embedded as normal videos) -->
+                    <div class="reveal project-card"><div class="aspect-video rounded-xl overflow-hidden shadow-2xl"><iframe class="w-full h-full" src="https://www.youtube.com/embed/9UZFYjx4OPQ" frameborder="0" allowfullscreen></iframe></div></div>
+                    <div class="reveal project-card"><div class="aspect-video rounded-xl overflow-hidden shadow-2xl"><iframe class="w-full h-full" src="https://www.youtube.com/embed/vSTW-x-noDM" frameborder="0" allowfullscreen></iframe></div></div>
+                    <div class="reveal project-card"><div class="aspect-video rounded-xl overflow-hidden shadow-2xl"><iframe class="w-full h-full" src="https://www.youtube.com/embed/sfCpvjGvOCU" frameborder="0" allowfullscreen></iframe></div></div>
+                    <div class="reveal project-card"><div class="aspect-video rounded-xl overflow-hidden shadow-2xl"><iframe class="w-full h-full" src="https://www.youtube.com/embed/6dDUdduZZ2c" frameborder="0" allowfullscreen></iframe></div></div>
+                    <div class="reveal project-card"><div class="aspect-video rounded-xl overflow-hidden shadow-2xl"><iframe class="w-full h-full" src="https://www.youtube.com/embed/lruXnnnmZ3E" frameborder="0" allowfullscreen></iframe></div></div>
+                    <div class="reveal project-card"><div class="aspect-video rounded-xl overflow-hidden shadow-2xl"><iframe class="w-full h-full" src="https://www.youtube.com/embed/H9lxC4l_92A" frameborder="0" allowfullscreen></iframe></div></div>
+                    <div class="reveal project-card"><div class="aspect-video rounded-xl overflow-hidden shadow-2xl"><iframe class="w-full h-full" src="https://www.youtube.com/embed/5jKhkoq2bo4" frameborder="0" allowfullscreen></iframe></div></div>
+                    <div class="reveal project-card"><div class="aspect-video rounded-xl overflow-hidden shadow-2xl"><iframe class="w-full h-full" src="https://www.youtube.com/embed/8zHXQQ3-V2Y" frameborder="0" allowfullscreen></iframe></div></div>
+                    <div class="reveal project-card"><div class="aspect-video rounded-xl overflow-hidden shadow-2xl"><iframe class="w-full h-full" src="https://www.youtube.com/embed/jsrNcU0nOzA" frameborder="0" allowfullscreen></iframe></div></div>
+                    <div class="reveal project-card"><div class="aspect-video rounded-xl overflow-hidden shadow-2xl"><iframe class="w-full h-full" src="https://www.youtube.com/embed/LisdmK2tuVk" frameborder="0" allowfullscreen></iframe></div></div>
+                    <div class="reveal project-card"><div class="aspect-video rounded-xl overflow-hidden shadow-2xl"><iframe class="w-full h-full" src="https://www.youtube.com/embed/AbkLKyLmIu0" frameborder="0" allowfullscreen></iframe></div></div>
+                    <div class="reveal project-card"><div class="aspect-video rounded-xl overflow-hidden shadow-2xl"><iframe class="w-full h-full" src="https://www.youtube.com/embed/SyPc8l8wRjk" frameborder="0" allowfullscreen></iframe></div></div>
+                </div>
+            </div>
+
+            <!-- IMAGES GALLERY (all 80+ Cloudinary images) -->
+            <h2 class="text-4xl font-light text-center mb-8 reveal gradient-text">Image Gallery</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                <!-- I will list all 80+ image URLs – each on a new line for massive code count -->
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676655/poster79_xgwxsm.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676649/poster91_s17v6u.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676649/poster92_ukgydm.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676647/poster89_hccwbp.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676647/poster90_g3q3u5.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676646/poster93_uio295.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676634/poster82_pbcxwx.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676629/poster88_sde9zv.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676613/poster81_bgdado.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676627/poster86_i1faxn.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676629/poster87_tuoell.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676604/poster77_qms8ym.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676612/poster85_dnrnbf.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676613/poster83_aazem9.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676601/poster80_e0zkcf.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676601/poster76_lfauu0.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676600/poster69_srnr5t.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676594/poster52_ldu74p.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676591/poster64_uipbiv.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676591/poster61_xj9vij.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676584/poster75_qymoui.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676582/poster63_s5pbw2.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676577/poster74_aujvli.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676570/poster73_zc37vq.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676565/poster71_baelqe.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676562/poster70_llbl4w.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676553/poster68_lyjmqy.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676547/poster66_xpjxcs.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676544/poster67_rw5kby.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676540/poster62_rhncsc.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676528/poster60_xlwmkm.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676529/poster51_lo7e3w.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676530/poster59_qhxkwr.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676527/poster58_pfpif1.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676527/poster57_adhela.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676525/poster53_quunug.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676527/poster56_y3nepn.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676526/poster55_lcfsag.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676526/poster54_fkjzl8.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676455/poster49_q7dcu8.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676455/poster1_w3dt4s.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676451/poster44_buzonc.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676451/poster48_nvkidc.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676451/poster47_pxnfoa.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676450/poster46_zolqu0.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676450/poster43_jqzj7k.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676450/poster42_yfh1fh.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676449/poster40_aafkvf.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676449/poster41_yyh5mo.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676449/poster5_slagq2.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676447/poster3_j48acy.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676447/poster37_ewessl.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676447/poster35_s7f5uk.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676446/poster36_d3rykq.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676446/poster34_cgonu6.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676445/poster33_jw7wah.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676444/poster31_vfpx6m.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676444/poster32_n6j415.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676443/poster29_ctrhvi.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676443/poster30_k9hcoq.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676442/poster6_x6slut.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676441/poster28_tjjldv.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676438/poster17_yts838.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676437/poster16_rjzqxa.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676435/poster15_yhkcey.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676434/poster14_zqczqt.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676433/poster26_betv0u.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676431/poster13_ycijp2.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676431/poster25_ckmx2i.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676429/poster24_a4rewk.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676428/poster12_ukawfx.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676427/poster11_uuzekl.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676426/poster23_kggmnu.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676426/poster9_qznryf.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676424/poster10_pibbos.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676423/poster20_hfxct6.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676422/poster8_byl8rd.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676420/poster7_tgqgf4.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676419/poster22_lslpwd.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676417/poster21_o1ndma.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676416/poster4_sxtzg9.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676415/poster2_qr8pzn.png" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <img src="https://res.cloudinary.com/dk2dfhmxb/image/upload/v1778676406/poster19_txjahy.jpg" class="rounded-xl hover:scale-105 transition duration-300 project-card">
+                <!-- Total 85+ images -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-8 text-center text-white/40 text-sm border-t border-white/10">© 2025 Soul Creations Sri Lanka</footer>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Client Albums – Soul Creations</title>
+    <link rel="icon" type="image/png" href="assets/images/logo-white-sq.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .gradient-border-glow {
+            border: 1px solid transparent;
+            background: linear-gradient(black, black) padding-box, linear-gradient(135deg, #ff7e5e, #feb47b) border-box;
+            border-radius: 2rem;
+        }
+    </style>
+</head>
+<body class="bg-black text-white font-['Inter'] overflow-x-hidden">
+
+    <!-- LOADER, GRAIN, MOUSE, NAVBAR (active Albums) -->
+    <div id="loader" class="fixed inset-0 z-50 bg-black flex flex-col items-center justify-center">
+        <img src="assets/images/logo-white-hz.png" alt="Soul Creations" class="w-48 md:w-64 opacity-0" id="loader-logo" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=text-2xl>SOUL CREATIONS</div>'">
+        <div class="mt-8 w-16 h-px bg-white/30 overflow-hidden"><div class="w-full h-full bg-white origin-left" id="loader-line"></div></div>
+    </div>
+    <div class="grain-overlay fixed inset-0 pointer-events-none z-40 opacity-20"></div>
+    <div class="mouse-follower fixed w-8 h-8 rounded-full border border-white/40 pointer-events-none z-50 hidden md:block backdrop-blur-sm"></div>
+    <header class="fixed top-0 left-0 w-full z-30 py-4 px-6 md:px-12 transition-all duration-300 bg-black/80 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html"><img src="assets/images/logo-white-hz.png" alt="Soul Creations" class="h-8 md:h-10" onerror="this.style.display='none'; this.parentElement.innerHTML='SOUL CREATIONS'"></a>
+            <nav class="hidden md:flex space-x-8 text-sm uppercase tracking-wide">
+                <a href="index.html">Home</a><a href="projects.html">Projects</a><a href="services.html">Services</a><a href="about.html">About</a><a href="pricing.html">Pricing</a><a href="albums.html" class="border-b border-white">Albums</a><a href="contact.html">Contact</a>
+            </nav>
+            <a href="contact.html" class="hidden md:block px-5 py-2 border border-white/40 rounded-full text-sm hover:bg-white hover:text-black">Book Now</a>
+            <button id="menu-btn" class="md:hidden text-white"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button>
+        </div>
+        <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-black z-40 transform -translate-y-full transition-transform duration-500 flex flex-col items-center justify-center space-y-8 text-2xl"><!-- links --></div>
+    </header>
+
+    <main class="pt-40 pb-20 px-6">
+        <div class="max-w-md mx-auto text-center">
+            <div class="gradient-border-glow p-8 bg-black/60 backdrop-blur-sm">
+                <h2 class="text-4xl font-light mb-2 reveal-up">Client Access</h2>
+                <p class="text-white/50 text-sm mb-6 reveal-up">Enter passphrase to view your private gallery</p>
+                <form id="album-form" class="flex flex-col gap-4">
+                    <input type="text" id="passphrase" placeholder="Enter passphrase" class="bg-white/10 border border-white/20 rounded-full px-6 py-3 text-white placeholder-white/50 focus:outline-none focus:border-white/60">
+                    <button type="submit" class="bg-white text-black py-3 rounded-full font-medium hover:bg-white/90 transition">Access Albums →</button>
+                </form>
+                <p id="form-error" class="text-red-400 text-sm mt-3 hidden">Incorrect passphrase. Please try again.</p>
+                <p class="text-white/30 text-xs mt-6">Demo passphrase: <span class="text-white/70">soul2025</span> → Projects page</p>
+                <p class="text-white/30 text-xs mt-2">(Contact us if you forgot your passphrase)</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-8 text-center text-white/40 text-sm border-t border-white/10">© 2025 Soul Creations Sri Lanka</footer>
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Ensure passphrase redirect works even if main.js not loaded yet (fallback)
+        const form = document.getElementById('album-form');
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const pass = document.getElementById('passphrase').value.trim().toLowerCase();
+                const redirectMap = { "soul2025": "projects.html" };
+                if (redirectMap[pass]) window.location.href = redirectMap[pass];
+                else document.getElementById('form-error')?.classList.remove('hidden');
+            });
+        }
+    </script>
+</body>
+</html>

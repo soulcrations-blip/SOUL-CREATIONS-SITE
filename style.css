@@ -1,0 +1,75 @@
+/* ===== GLOBAL STYLES – Lenscape Studios Clone ===== */
+/* Grain overlay texture */
+.grain-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+}
+
+/* Reveal animations (hidden initially) */
+.reveal, .reveal-up {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Service row hover effect */
+.service-row {
+    transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+/* Mobile menu links */
+#mobile-menu a {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+}
+#mobile-menu a:hover {
+    border-bottom-color: white;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #111;
+}
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+/* Bounce animation for down arrow */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+}
+.animate-bounce {
+    animation: bounce 1.5s infinite;
+}
+
+/* Mouse follower (desktop) */
+.mouse-follower {
+    transition: width 0.2s, height 0.2s, background 0.2s;
+}
+.mouse-follower:hover {
+    width: 48px;
+    height: 48px;
+    background: rgba(255,255,255,0.1);
+}
+
+/* Responsive font adjustments */
+@media (max-width: 768px) {
+    .service-row span {
+        font-size: 1.75rem !important;
+    }
+    .mouse-follower {
+        display: none;
+    }
+}
+
+/* Additional utility */
+img {
+    max-width: 100%;
+    height: auto;
+}

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Services – Soul Creations Sri Lanka</title>
+    <link rel="icon" type="image/png" href="assets/images/logo-white-sq.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Orange/red gradient for services page */
+        .gradient-border-bottom {
+            border-bottom: 2px solid transparent;
+            border-image: linear-gradient(95deg, #ff7e5e, #feb47b);
+            border-image-slice: 1;
+        }
+        .service-card-grad {
+            background: linear-gradient(135deg, rgba(255,126,94,0.05), rgba(254,180,123,0.02));
+            transition: all 0.3s ease;
+        }
+        .service-card-grad:hover {
+            background: linear-gradient(135deg, rgba(255,126,94,0.15), rgba(254,180,123,0.08));
+            transform: translateY(-4px);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #ff7e5e, #feb47b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-black text-white font-['Inter'] overflow-x-hidden">
+
+    <!-- LOADER (same as index) -->
+    <div id="loader" class="fixed inset-0 z-50 bg-black flex flex-col items-center justify-center">
+        <img src="assets/images/logo-white-hz.png" alt="Soul Creations" class="w-48 md:w-64 opacity-0" id="loader-logo" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=text-2xl tracking-wider>SOUL CREATIONS</div>'">
+        <div class="mt-8 w-16 h-px bg-white/30 overflow-hidden"><div class="w-full h-full bg-white origin-left" id="loader-line"></div></div>
+    </div>
+
+    <!-- GRAIN OVERLAY -->
+    <div class="grain-overlay fixed inset-0 pointer-events-none z-40 opacity-20"></div>
+
+    <!-- MOUSE FOLLOWER -->
+    <div class="mouse-follower fixed w-8 h-8 rounded-full border border-white/40 pointer-events-none z-50 hidden md:block backdrop-blur-sm"></div>
+
+    <!-- NAVBAR (identical to index, active Services) -->
+    <header class="fixed top-0 left-0 w-full z-30 py-4 px-6 md:px-12 transition-all duration-300 bg-black/80 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html"><img src="assets/images/logo-white-hz.png" alt="Soul Creations" class="h-8 md:h-10" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=text-white text-xl font-light>SOUL CREATIONS</span>'"></a>
+            <nav class="hidden md:flex space-x-8 text-sm uppercase tracking-wide">
+                <a href="index.html">Home</a><a href="projects.html">Projects</a><a href="services.html" class="border-b border-white">Services</a><a href="about.html">About</a><a href="pricing.html">Pricing</a><a href="albums.html">Albums</a><a href="contact.html">Contact</a>
+            </nav>
+            <a href="contact.html" class="hidden md:block px-5 py-2 border border-white/40 rounded-full text-sm hover:bg-white hover:text-black transition">Book Now</a>
+            <button id="menu-btn" class="md:hidden text-white"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button>
+        </div>
+        <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-black z-40 transform -translate-y-full transition-transform duration-500 ease-in-out flex flex-col items-center justify-center space-y-8 text-2xl">
+            <a href="index.html">Home</a><a href="projects.html">Projects</a><a href="services.html">Services</a><a href="about.html">About</a><a href="pricing.html">Pricing</a><a href="albums.html">Albums</a><a href="contact.html">Contact</a>
+            <a href="contact.html" class="mt-4 px-8 py-2 border border-white/50 rounded-full text-base">Book Now</a>
+        </div>
+    </header>
+
+    <main class="pt-32 pb-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h1 class="text-6xl md:text-8xl font-light text-center mb-6 reveal-up gradient-text">What We Do</h1>
+            <p class="text-center text-white/60 text-lg mb-16 reveal-up">Professional creative services tailored for your brand – excellence in every frame.</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- 7 service cards – each with detailed description, no emojis -->
+                <div class="service-card-grad rounded-2xl p-8 reveal border border-white/10">
+                    <h2 class="text-3xl font-bold gradient-border-bottom pb-2 inline-block">Event Coverage</h2>
+                    <p class="text-white/70 mt-4 leading-relaxed">Weddings, corporate events, concerts, cultural shows – we capture the essence with cinematic precision. Our team uses multi-camera setups, gimbals, and professional audio recording to deliver immersive storytelling.</p>
+                    <ul class="mt-4 text-white/50 text-sm list-disc pl-5 space-y-1">
+                        <li>Full-day coverage with highlight reels</li>
+                        <li>Same-day edits available</li>
+                        <li>4K cinematic color grading</li>
+                    </ul>
+                </div>
+                <div class="service-card-grad rounded-2xl p-8 reveal border border-white/10">
+                    <h2 class="text-3xl font-bold gradient-border-bottom pb-2 inline-block">Video Editing</h2>
+                    <p class="text-white/70 mt-4 leading-relaxed">Cinematic cuts, advanced color grading, motion graphics, and sound design. We transform raw footage into compelling narratives that resonate with audiences.</p>
+                    <ul class="mt-4 text-white/50 text-sm list-disc pl-5 space-y-1">
+                        <li>Adobe Premiere Pro & DaVinci Resolve workflow</li>
+                        <li>Visual effects & transitions</li>
+                        <li>Music synchronization & audio mastering</li>
+                    </ul>
+                </div>
+                <div class="service-card-grad rounded-2xl p-8 reveal border border-white/10">
+                    <h2 class="text-3xl font-bold gradient-border-bottom pb-2 inline-block">Brand Content</h2>
+                    <p class="text-white/70 mt-4 leading-relaxed">Social media kits, product videos, corporate films, and ad creatives that elevate brand identity. We study your audience to craft content that converts.</p>
+                    <ul class="mt-4 text-white/50 text-sm list-disc pl-5 space-y-1">
+                        <li>Instagram Reels & TikTok strategy</li>
+                        <li>Product launch trailers</li>
+                        <li>Testimonial & case study videos</li>
+                    </ul>
+                </div>
+                <div class="service-card-grad rounded-2xl p-8 reveal border border-white/10">
+                    <h2 class="text-3xl font-bold gradient-border-bottom pb-2 inline-block">Aerial Videography</h2>
+                    <p class="text-white/70 mt-4 leading-relaxed">Drone shots that elevate your project. From sweeping landscapes to dynamic tracking shots, we provide stunning aerial perspectives.</p>
+                    <ul class="mt-4 text-white/50 text-sm list-disc pl-5 space-y-1">
+                        <li>DJI Inspire & Mavic 3 Pro</li>
+                        <li>Licensed drone operators</li>
+                        <li>4K/60fps HDR footage</li>
+                    </ul>
+                </div>
+                <div class="service-card-grad rounded-2xl p-8 reveal border border-white/10">
+                    <h2 class="text-3xl font-bold gradient-border-bottom pb-2 inline-block">Aerial Photography</h2>
+                    <p class="text-white/70 mt-4 leading-relaxed">High-resolution aerial stills for real estate, events, nature, and construction. Perfect for marketing materials and documentation.</p>
+                    <ul class="mt-4 text-white/50 text-sm list-disc pl-5 space-y-1">
+                        <li>48MP RAW images</li>
+                        <li>360° panoramic views</li>
+                        <li>Fast turnaround editing</li>
+                    </ul>
+                </div>
+                <div class="service-card-grad rounded-2xl p-8 reveal border border-white/10">
+                    <h2 class="text-3xl font-bold gradient-border-bottom pb-2 inline-block">Live Streaming</h2>
+                    <p class="text-white/70 mt-4 leading-relaxed">Multi-camera live streaming for concerts, conferences, weddings, and online events. We ensure zero latency and professional broadcast quality.</p>
+                    <ul class="mt-4 text-white/50 text-sm list-disc pl-5 space-y-1">
+                        <li>RTMP / YouTube / Facebook integration</li>
+                        <li>Real-time graphics & lower thirds</li>
+                        <li>Cloud recording & replay</li>
+                    </ul>
+                </div>
+                <div class="service-card-grad rounded-2xl p-8 reveal border border-white/10 md:col-span-2">
+                    <h2 class="text-3xl font-bold gradient-border-bottom pb-2 inline-block">Short-form Content</h2>
+                    <p class="text-white/70 mt-4 leading-relaxed">Reels, TikToks, YouTube Shorts – engineered for virality. We understand algorithms and trends to maximize reach and engagement.</p>
+                    <ul class="mt-4 text-white/50 text-sm list-disc pl-5 space-y-1">
+                        <li>Vertical format optimization</li>
+                        <li>Captions, transitions, sound effects</li>
+                        <li>Weekly content calendars</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Additional tech spec section with gradient -->
+            <div class="mt-20 text-center">
+                <div class="inline-block p-8 rounded-2xl bg-gradient-to-r from-orange-500/10 to-red-500/10 border border-orange-500/30">
+                    <p class="text-xl font-light">Powered by industry‑leading tools</p>
+                    <div class="flex flex-wrap justify-center gap-6 mt-4 text-white/60">
+                        <span>Adobe Premiere Pro</span><span>DaVinci Resolve</span><span>After Effects</span>
+                        <span>DJI Inspire 3</span><span>Sony FX6</span><span>Blackmagic Cameras</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-8 text-center text-white/40 text-sm border-t border-white/10">© 2025 Soul Creations Sri Lanka</footer>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Soul Creations Sri Lanka – Content That Creates Impact</title>
+    <!-- Favicon (replace with your actual .ico or PNG) -->
+    <link rel="icon" type="image/png" href="assets/images/logo-white-sq.png">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- GSAP + Lenis -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* No gradient on homepage – pure black/white */
+        body { background-color: #000000; }
+    </style>
+</head>
+<body class="bg-black text-white font-['Inter'] overflow-x-hidden">
+
+    <!-- LOADER -->
+    <div id="loader" class="fixed inset-0 z-50 bg-black flex flex-col items-center justify-center">
+        <img src="assets/images/logo-white-hz.png" alt="Soul Creations" class="w-48 md:w-64 opacity-0" id="loader-logo" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=text-2xl tracking-wider>SOUL CREATIONS</div>'">
+        <div class="mt-8 w-16 h-px bg-white/30 overflow-hidden">
+            <div class="w-full h-full bg-white origin-left" id="loader-line"></div>
+        </div>
+    </div>
+
+    <!-- GRAIN OVERLAY -->
+    <div class="grain-overlay fixed inset-0 pointer-events-none z-40 opacity-20"></div>
+
+    <!-- MOUSE FOLLOWER (desktop only) -->
+    <div class="mouse-follower fixed w-8 h-8 rounded-full border border-white/40 pointer-events-none z-50 hidden md:block backdrop-blur-sm"></div>
+
+    <!-- NAVBAR (Lenscape style) -->
+    <header class="fixed top-0 left-0 w-full z-30 py-4 px-6 md:px-12 transition-all duration-300 bg-black/80 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html">
+                <img src="assets/images/logo-white-hz.png" alt="Soul Creations" class="h-8 md:h-10" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=text-white text-xl font-light>SOUL CREATIONS</span>'">
+            </a>
+            <nav class="hidden md:flex space-x-8 text-sm uppercase tracking-wide">
+                <a href="index.html" class="hover:text-white/70 transition">Home</a>
+                <a href="projects.html" class="hover:text-white/70 transition">Projects</a>
+                <a href="services.html" class="hover:text-white/70 transition">Services</a>
+                <a href="about.html" class="hover:text-white/70 transition">About</a>
+                <a href="pricing.html" class="hover:text-white/70 transition">Pricing</a>
+                <a href="albums.html" class="hover:text-white/70 transition">Albums</a>
+                <a href="contact.html" class="hover:text-white/70 transition">Contact</a>
+            </nav>
+            <a href="contact.html" class="hidden md:block px-5 py-2 border border-white/40 rounded-full text-sm hover:bg-white hover:text-black transition">Book Now</a>
+            <button id="menu-btn" class="md:hidden text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile menu overlay -->
+        <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-black z-40 transform -translate-y-full transition-transform duration-500 ease-in-out flex flex-col items-center justify-center space-y-8 text-2xl">
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="services.html">Services</a>
+            <a href="about.html">About</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="albums.html">Albums</a>
+            <a href="contact.html">Contact</a>
+            <a href="contact.html" class="mt-4 px-8 py-2 border border-white/50 rounded-full text-base">Book Now</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO VIDEO SECTION (larger fonts) -->
+        <section class="relative h-screen flex items-center justify-center overflow-hidden">
+            <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-cinematic-view-of-a-mountain-range-4122-large.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-black/40 z-10"></div>
+            <div class="relative z-20 text-center px-4">
+                <p class="text-sm uppercase tracking-wider text-white/80 mb-4 reveal-up">Soul Creations Sri Lanka</p>
+                <h1 class="text-6xl md:text-9xl font-bold leading-tight reveal-up">We don't just create content.</h1>
+                <p class="text-4xl md:text-7xl italic font-light mt-2 reveal-up">We create <span class="border-b-4 border-white">impact</span>.</p>
+                <a href="#services" class="inline-block mt-8 px-8 py-3 border border-white rounded-full text-sm uppercase tracking-wider hover:bg-white hover:text-black transition reveal-up">View Work</a>
+            </div>
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+                <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+            </div>
+        </section>
+
+        <!-- STATEMENT SECTION -->
+        <section class="py-24 px-6 bg-black text-center">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-5xl md:text-7xl font-bold reveal">Most content is ignored.<br> <span class="italic">Ours isn't.</span></h2>
+            </div>
+        </section>
+
+        <!-- SERVICES SECTION – BIG ROWS (larger font) -->
+        <section id="services" class="py-16 px-6 bg-black border-t border-white/10">
+            <div class="max-w-6xl mx-auto">
+                <div class="service-row group flex justify-between items-center py-6 md:py-8 border-b border-white/10 cursor-pointer transition-all duration-500 hover:bg-white hover:text-black hover:pl-8">
+                    <span class="text-4xl md:text-6xl font-light tracking-wide">Event Coverage</span>
+                    <span class="text-sm uppercase opacity-0 group-hover:opacity-100 transition">→</span>
+                </div>
+                <div class="service-row group flex justify-between items-center py-6 md:py-8 border-b border-white/10 cursor-pointer transition-all duration-500 hover:bg-white hover:text-black hover:pl-8">
+                    <span class="text-4xl md:text-6xl font-light tracking-wide">Video Editing</span>
+                    <span class="text-sm uppercase opacity-0 group-hover:opacity-100 transition">→</span>
+                </div>
+                <div class="service-row group flex justify-between items-center py-6 md:py-8 border-b border-white/10 cursor-pointer transition-all duration-500 hover:bg-white hover:text-black hover:pl-8">
+                    <span class="text-4xl md:text-6xl font-light tracking-wide">Brand Content</span>
+                    <span class="text-sm uppercase opacity-0 group-hover:opacity-100 transition">→</span>
+                </div>
+                <div class="service-row group flex justify-between items-center py-6 md:py-8 border-b border-white/10 cursor-pointer transition-all duration-500 hover:bg-white hover:text-black hover:pl-8">
+                    <span class="text-4xl md:text-6xl font-light tracking-wide">Aerial Videography</span>
+                    <span class="text-sm uppercase opacity-0 group-hover:opacity-100 transition">→</span>
+                </div>
+                <div class="service-row group flex justify-between items-center py-6 md:py-8 border-b border-white/10 cursor-pointer transition-all duration-500 hover:bg-white hover:text-black hover:pl-8">
+                    <span class="text-4xl md:text-6xl font-light tracking-wide">Aerial Photography</span>
+                    <span class="text-sm uppercase opacity-0 group-hover:opacity-100 transition">→</span>
+                </div>
+                <div class="service-row group flex justify-between items-center py-6 md:py-8 border-b border-white/10 cursor-pointer transition-all duration-500 hover:bg-white hover:text-black hover:pl-8">
+                    <span class="text-4xl md:text-6xl font-light tracking-wide">Live Streaming</span>
+                    <span class="text-sm uppercase opacity-0 group-hover:opacity-100 transition">→</span>
+                </div>
+                <div class="service-row group flex justify-between items-center py-6 md:py-8 border-b border-white/10 cursor-pointer transition-all duration-500 hover:bg-white hover:text-black hover:pl-8">
+                    <span class="text-4xl md:text-6xl font-light tracking-wide">Short-form Content</span>
+                    <span class="text-sm uppercase opacity-0 group-hover:opacity-100 transition">→</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- VISION QUOTE -->
+        <section class="py-24 px-6 bg-black relative overflow-hidden">
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <p class="text-7xl md:text-9xl font-black text-white/5 absolute -top-10 left-1/2 -translate-x-1/2">VISION</p>
+                <h3 class="text-3xl md:text-6xl italic font-light leading-relaxed reveal">"WE DON'T JUST CAPTURE MOMENTS; WE CRAFT EMOTIONS IN EVERY FRAME."</h3>
+            </div>
+        </section>
+
+        <!-- CLIENT ACCESS FORM -->
+        <section id="albums" class="py-24 px-6 bg-black">
+            <div class="max-w-md mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-light mb-2">Client Access</h2>
+                <p class="text-white/50 text-sm mb-6">Enter passphrase to view your gallery</p>
+                <form id="album-form" class="flex flex-col gap-4">
+                    <input type="text" id="passphrase" placeholder="Enter passphrase" class="bg-white/10 border border-white/20 rounded-full px-6 py-3 text-white placeholder-white/50 focus:outline-none focus:border-white/60">
+                    <button type="submit" class="bg-white text-black py-3 rounded-full font-medium hover:bg-white/90 transition">Access Albums</button>
+                </form>
+                <p id="form-error" class="text-red-400 text-sm mt-3 hidden">Incorrect passphrase. Try again.</p>
+                <p class="text-white/30 text-xs mt-6">Demo passphrase: <span class="text-white/70">soul2025</span> → Projects page</p>
+            </div>
+        </section>
+
+        <!-- FINAL CTA -->
+        <section class="py-24 px-6 bg-gradient-to-t from-black to-zinc-950 text-center border-t border-white/10">
+            <h2 class="text-5xl md:text-7xl font-bold reveal">Let's create something powerful.</h2>
+            <a href="contact.html" class="inline-block mt-8 px-10 py-4 bg-white text-black rounded-full text-lg font-semibold hover:scale-105 transition transform">Book Now</a>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-12 px-6 border-t border-white/10 bg-black">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div>
+                <img src="assets/images/logo-white-hz.png" alt="Soul Creations" class="h-8 opacity-80" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=text-white/80>SOUL CREATIONS</span>'">
+                <p class="text-white/40 text-sm mt-2">© 2025 Soul Creations Sri Lanka</p>
+            </div>
+            <div class="flex space-x-6">
+                <a href="https://www.instagram.com/soulc.lk" target="_blank" class="text-white/60 hover:text-white transition">Instagram</a>
+                <a href="https://web.facebook.com/61572908655565" target="_blank" class="text-white/60 hover:text-white transition">Facebook</a>
+                <a href="#" target="_blank" class="text-white/60 hover:text-white transition">TikTok</a>
+                <a href="#" target="_blank" class="text-white/60 hover:text-white transition">YouTube</a>
+            </div>
+            <div class="text-white/40 text-sm">
+                <a href="mailto:soulcrations@gmail.com" class="hover:text-white">soulcrations@gmail.com</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP BUTTON -->
+    <a href="https://wa.me/94712049140" target="_blank" class="fixed bottom-6 right-6 bg-green-500 rounded-full p-3 shadow-lg z-50 hover:scale-110 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12.032 2.016c-5.52 0-10 4.48-10 10 0 1.78.47 3.45 1.28 4.91L2 22.016l5.17-1.37c1.39.77 2.97 1.21 4.66 1.21 5.52 0 10-4.48 10-10s-4.48-10-10-10z"/><path d="M12.032 4.016c4.42 0 8 3.58 8 8s-3.58 8-8 8c-1.45 0-2.82-.39-4.01-1.07l-.28-.16-3.06.81.82-3.02-.17-.29c-.77-1.26-1.21-2.71-1.21-4.27 0-4.42 3.58-8 8-8z"/><path d="M16.69 13.68c-.18-.09-1.06-.52-1.22-.58s-.28-.09-.4.09c-.12.18-.46.58-.56.7-.1.12-.21.13-.39.04-.61-.24-1.25-.66-1.74-1.16-.52-.52-.9-1.15-1.14-1.84-.08-.22-.01-.36.08-.48.08-.1.18-.22.27-.33.09-.11.12-.19.18-.32.06-.13.03-.24-.02-.33-.05-.09-.4-1-.55-1.37-.14-.36-.3-.31-.41-.31-.11 0-.23 0-.35 0-.12 0-.31.04-.48.2-.16.16-.63.62-.63 1.51 0 .89.64 1.74.73 1.86.09.12 1.24 1.9 3.01 2.66.42.18.75.29 1.01.37.42.13.8.11 1.1.07.34-.04 1.06-.43 1.21-.85.15-.42.15-.78.11-.85-.04-.07-.14-.12-.32-.21z"/></svg>
+    </a>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

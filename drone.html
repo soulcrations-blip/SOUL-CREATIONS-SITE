@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aerial by Soul - Drone Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-black text-white">
+    <header class="fixed top-0 left-0 w-full z-30 py-4 px-6 bg-black/80 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html"><img src="assets/images/logo-white-hz.png" alt="Soul Creations" class="h-8 md:h-10" onerror="this.style.display='none'; this.parentElement.innerHTML='SOUL CREATIONS'"></a>
+            <nav class="hidden md:flex space-x-8 text-sm uppercase tracking-wide">
+                <a href="index.html">Home</a><a href="projects.html">Projects</a><a href="services.html">Services</a><a href="albums.html">Albums</a><a href="drone.html" class="border-b border-white">Drone</a><a href="contact.html">Contact</a>
+            </nav>
+            <a href="contact.html" class="hidden md:block px-5 py-2 border border-white/40 rounded-full text-sm hover:bg-white hover:text-black">Book Now</a>
+            <button id="menu-btn" class="md:hidden text-white"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button>
+        </div>
+        <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-black z-40 transform -translate-y-full transition-transform duration-500 flex flex-col items-center justify-center space-y-8 text-xl"><!-- same links --></div>
+    </header>
+    <main class="pt-32 pb-20 px-6 text-center">
+        <h1 class="text-5xl md:text-7xl font-light">Hover by Soul</h1>
+        <p class="text-xl text-white/70 mt-4 max-w-2xl mx-auto">Professional aerial cinematography and photography using high-end drones.</p>
+        <div class="mt-12 grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div class="bg-white/5 p-6 rounded-2xl"><h3 class="text-xl font-bold">Wedding Aerials</h3><p class="text-white/60 mt-2">Epestablishing shots of venues</p></div>
+            <div class="bg-white/5 p-6 rounded-2xl"><h3 class="text-xl font-bold">Real Estate</h3><p class="text-white/60 mt-2">Property tours & neighbourhood overviews</p></div>
+            <div class="bg-white/5 p-6 rounded-2xl"><h3 class="text-xl font-bold">Cinematic B-Roll</h3><p class="text-white/60 mt-2">For music videos, films, commercials</p></div>
+        </div>
+        <a href="contact.html" class="inline-block mt-12 px-8 py-3 bg-white text-black rounded-full font-semibold">Request Aerial Quote</a>
+    </main>
+    <footer class="py-8 text-center text-white/40 text-sm border-t border-white/10">© 2025 Soul Creations Sri Lanka</footer>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
